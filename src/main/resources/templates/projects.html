@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">My Projects</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: darkgreen;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .project {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 600px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .project img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .project h2 {
+            margin-top: 0;
+        }
+
+        .project a {
+            display: inline-block;
+            margin-top: 10px;
+            color: darkgreen;
+            text-decoration: none;
+        }
+
+        .project a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${pageTitle}">My Projects</h1>
+
+<!-- Navigation -->
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/projects}">Projects</a>
+    <a th:href="@{/gallery}">Gallery</a>
+</nav>
+
+<!-- Projects list -->
+<div th:each="project : ${projects}" class="project">
+    <img th:src="${project.imageUrl}" alt="Project Image">
+    <h2 th:text="${project.title}">Project Title</h2>
+    <p th:text="${project.techStack}">Tech stack used</p>
+    <p th:text="${project.description}">Project description</p>
+    <a th:href="${project.githubUrl}" target="_blank">View on GitHub</a>
+</div>
+</body>
+</html>

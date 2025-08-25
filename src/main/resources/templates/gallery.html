@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">Gallery</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: bold;
+            color: darkgreen;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Gallery items */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            background-color: #e0f2e0;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item a {
+            display: inline-block;
+            margin-top: 10px;
+            color: darkgreen;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .gallery-item a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${pageTitle}">Gallery</h1>
+<h2 th:text="${tagline}">A collection of my favorite images.</h2>
+
+<!-- Navigation -->
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/projects}">Projects</a>
+    <a th:href="@{/gallery}">Gallery</a>
+</nav>
+
+<!-- Gallery items -->
+<div class="gallery-container" th:each="image : ${images}">
+    <div class="gallery-item">
+        <h3 th:text="${image.title}">Image Title</h3>
+
+        <!-- Check if file is image or PDF -->
+        <div th:if="${#strings.endsWith(image.imageUrl, '.pdf')}">
+            <a th:href="${image.imageUrl}" target="_blank" th:text="'Download PDF: ' + image.title">Download PDF</a>
+        </div>
+        <div th:if="${!#strings.endsWith(image.imageUrl, '.pdf')}">
+            <img th:src="${image.imageUrl}" alt="Project Image">
+        </div>
+
+        <p th:text="${image.description}">Image Description</p>
+
+        <!-- Optional: GitHub link -->
+        <div th:if="${image.githubUrl}">
+            <a th:href="${image.githubUrl}" target="_blank">View on GitHub</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

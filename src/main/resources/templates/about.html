@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">About Me</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: darkgreen;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.5;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1 th:text="${pageTitle}">About Me</h1>
+<h2 th:text="${tagline}">Learn more about me and my journey as a developer.</h2>
+<p th:text="${description}"></p>
+
+
+<!-- Navigation -->
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/projects}">Projects</a>
+    <a th:href="@{/gallery}">Gallery</a>
+</nav>
+
+<!-- About text (optional extra content) -->
+<p>Hi, I’m Elijah, an aspiring cloud developer specializing in AWS and Java development. I’m passionate about building
+    scalable, secure, and efficient cloud-based applications.</p>
+<p>I’m currently gaining hands-on experience with AWS services like S3, EC2, RDS, and Lambda, alongside Spring Boot and
+    Git for full-stack development.</p>
+<p>My goal is to leverage cloud technologies to create real-world applications and optimize workflows, while
+    continuously learning about DevOps and cloud architecture.</p>
+<p>I recently developed a personal portfolio website hosted on AWS S3 to showcase my projects and skills.</p>
+</body>
+</html>
