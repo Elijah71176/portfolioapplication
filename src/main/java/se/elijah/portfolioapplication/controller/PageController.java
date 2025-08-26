@@ -31,6 +31,9 @@ public class PageController {
     public String gallery(Model model) {
         model.addAttribute("pageTitle", "Gallery");
         model.addAttribute("tagline", "A collection of images showcasing my work and experiences.");
+
+        // ✅ Pass the projects (with image URLs) to Thymeleaf
+        model.addAttribute("images", projectService.listProjects());
         return "gallery"; // Return the name of the Thymeleaf template (gallery.html)
     }
 }
