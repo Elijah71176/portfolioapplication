@@ -27,13 +27,20 @@ public class PageController {
         model.addAttribute("projects", projectService.listProjects());
         return "projects"; // Return the name of the Thymeleaf template (projects.html)
     }
-    @GetMapping("/gallery")
-    public String gallery(Model model) {
-        model.addAttribute("pageTitle", "Gallery");
-        model.addAttribute("tagline", "A collection of images showcasing my work and experiences.");
-
-        // ✅ Pass the projects (with image URLs) to Thymeleaf
-        model.addAttribute("images", projectService.listProjects());
-        return "gallery"; // Return the name of the Thymeleaf template (gallery.html)
+//    @GetMapping("/gallery")
+//    public String gallery(Model model) {
+//        model.addAttribute("pageTitle", "Gallery");
+//        model.addAttribute("tagline", "A collection of images showcasing my work and experiences.");
+//
+//        // ✅ Pass the projects (with image URLs) to Thymeleaf
+//        model.addAttribute("images", projectService.listProjects());
+//        return "gallery"; // Return the name of the Thymeleaf template (gallery.html)
+//    }
+    @GetMapping("/cv")
+    public String cv(Model model) {
+        model.addAttribute("pageTitle", "My CV");
+        model.addAttribute("tagline", "Download my CV to learn more about my skills and experience.");
+        return "cv"; // Return the name of the Thymeleaf template (cv.html)
     }
 }
+

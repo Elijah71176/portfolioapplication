@@ -21,7 +21,7 @@ public class ProjectService {
                         "S3 Demo",
                         "Upload/download files to S3 with AWS SDK v2.",
                         "Java, AWS SDK v2, S3",
-                        "https://myfilescloud.s3.eu-north-1.amazonaws.com/jensen+skola.jpg",
+                        "https://privateportfolio71176.s3.eu-north-1.amazonaws.com/jensen+skola.jpg",
                         "https://github.com/Elijah71176/s3demoCrud"
                 )
         );

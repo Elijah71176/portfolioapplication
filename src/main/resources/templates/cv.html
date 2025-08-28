@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">CV</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: darkgreen;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: darkgreen;
+            color: white;
+        }
+
+        .btn-outline-secondary {
+            background-color: white;
+            color: darkgreen;
+            border: 2px solid darkgreen;
+        }
+    </style>
 </head>
 <body>
-$END$
+
+<h1 th:text="${pageTitle}">CV / Resume</h1>
+<h2 th:text="${tagline}">Download my CV to learn more about my skills and experience.</h2>
+
+<!-- Navigation bar -->
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/projects}">Projects</a>
+    <a th:href="@{/cv}">CV</a>
+</nav>
+
+<!-- CV download and view buttons -->
+<div class="container" style="text-align:center; margin-top:30px;">
+    <a class="btn btn-primary" th:href="@{/cv/internship.pdf}" download>Download CV (PDF)</a>
+    <a class="btn btn-outline-secondary"
+       href="https://privateportfolio71176.s3.eu-north-1.amazonaws.com/jensen+skola.jpg"
+       target="_blank">
+        View CV on S3
+    </a>
+</div>
+
 </body>
 </html>
