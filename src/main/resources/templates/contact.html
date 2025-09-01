@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">Contact Me</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, p {
+            text-align: center;
+        }
+
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: darkgreen;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 120px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 24px;
+            background: darkgreen;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: seagreen;
+        }
+
+        .message {
+            text-align: center;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .success {
+            color: darkgreen;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .field-error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${pageTitle}">Contact Me</h1>
+<h2 th:text="${message}"></h2>
+<div class="form-container">
+    <!-- Success & error messages -->
+    <p class="message success" th:if="${successMessage}" th:text="${successMessage}"></p>
+    <p class="message error" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+    <!-- Contact form -->
+    <form th:action="@{/contact}" th:object="${contactForm}" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" id="name" required />
+            <div class="field-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" th:field="*{email}" id="email" required />
+            <div class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <div>
+            <label for="subject">Subject:</label>
+            <input type="text" th:field="*{subject}" id="subject" required />
+            <div class="field-error" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></div>
+        </div>
+
+        <div>
+            <label for="message">Message:</label>
+            <textarea th:field="*{message}" id="message" required></textarea>
+            <div class="field-error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></div>
+        </div>
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</div>
+
+<!-- Navigation -->
+<nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/about}">About</a>
+    <a th:href="@{/projects}">Projects</a>
+    <a th:href="@{/cv}">CV</a>
+    <a th:href="@{/contact}">Contact</a> <!-- ✅ new -->
+</nav>
+
+</body>
+</html>
