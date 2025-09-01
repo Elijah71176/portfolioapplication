@@ -7,11 +7,11 @@
         body {
             background-color: lightgreen;
             font-family: Arial, sans-serif;
-            padding: 20px;
             margin: 0;
+            padding: 0;
         }
 
-        h1, h2 {
+        h1, h2, p {
             text-align: center;
         }
 
@@ -31,33 +31,70 @@
             text-decoration: underline;
         }
 
-        /* Correct class selector for image */
         .corner-img {
             position: absolute;
             top: 20px;
             left: 20px;
-            width: 200px;
-            height: auto;
-            border-radius: 10px;
+            width: 180px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 100px auto 30px auto;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .btns {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 8px;
+            padding: 12px 24px;
+            background: darkgreen;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: seagreen;
         }
     </style>
 </head>
 <body>
-<!-- Profile Image -->
+
 <img th:src="@{/image/elijah.jpg}" alt="Elijah Portfolio" class="corner-img">
 
+<h1>Hi, I'm Elijah</h1>
+<h2 th:text="${tagline}">AWS Developer Student • Java & Cloud Enthusiast</h2>
 
-<h1>Welcome to my personal portfolio</h1>
-<h2 th:text="${tagline}">Fallback tagline</h2>
+<p class="intro">
+    I’m passionate about building scalable applications with AWS and Spring Boot,
+    and I enjoy exploring cloud technologies and DevOps practices.
+</p>
 
-<!-- Navigation -->
+<p class="intro">
+    I’m currently looking for internship opportunities or relevant positions
+    where I can apply my skills, grow as a developer, and contribute to impactful projects.
+</p>
+
+<div class="btns">
+    <a th:href="@{/projects}" class="btn">View Projects</a>
+</div>
+
 <nav>
     <a th:href="@{/}">Home</a>
     <a th:href="@{/about}">About</a>
     <a th:href="@{/projects}">Projects</a>
     <a th:href="@{/cv}">CV</a>
-
-    <!-- <a th:href="@{/gallery}">Gallery</a> -->
 </nav>
+
 </body>
 </html>
